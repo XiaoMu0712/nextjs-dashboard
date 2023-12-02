@@ -10,6 +10,7 @@ import {
 } from './definitions';
 import { formatCurrency } from './utils';
 import { unstable_noStore as noStore } from 'next/cache';
+import { log } from 'console';
 
 export async function fetchRevenue() {
   // Add noStore() here prevent the response from being cached.
@@ -174,6 +175,8 @@ export async function fetchInvoiceById(id: string) {
       amount: invoice.amount / 100,
     }));
 
+    console.log(invoice);
+    
     return invoice[0];
   } catch (error) {
     console.error('Database Error:', error);
